@@ -14,20 +14,5 @@ const App = () =>(
 
 );
 
-// class App extends React.Component {
-//
-//   render() {
-//     const { classes } = this.props;
-//     return (
-//       <div className={classes.root}>
-//         <ChatHeader />
-//
-//       <Sidebar chats={chats} />
-//       <Chat messages={messages}/>
-//
-//       </div>
-//     );
-//   }
-// }
 
 export default App;
