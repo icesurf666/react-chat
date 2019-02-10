@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
+import { Redirect } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -30,15 +31,21 @@ class StartPage extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, signup, login, isAuthenticated } = this.props;
     const { activeTab } = this.state;
+
+    if (isAuthenticated) {
+      return (
+        <Redirect to="/chat" />
+      );
+    }
 
     return (
       <React.Fragment>
         <AppBar>
           <Toolbar>
             <Typography variant="title" color="inherit" style={{ flex: 1 }}>
-              React Chat
+              DogeCodes React Chat
             </Typography>
           </Toolbar>
         </AppBar>
@@ -56,8 +63,8 @@ class StartPage extends React.Component {
                 </Tabs>
               </AppBar>
               <div className={classes.tabContent}>
-                {activeTab === 0 && <LoginForm />}
-                {activeTab === 1 && <SignupForm />}
+                {activeTab === 0 && <LoginForm onSubmit={login} />}
+                {activeTab === 1 && <SignupForm onSubmit={signup} />}
               </div>
             </Paper>
           </Grid>
