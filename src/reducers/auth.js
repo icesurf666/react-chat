@@ -2,8 +2,7 @@ import {
   SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE,
   LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE,
   LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE,
-} from "../constants";
-
+} from '../constants';
 
 const token = localStorage.getItem('token');
 
@@ -31,7 +30,7 @@ export default function auth(state = initialState, action) {
         isAuthenticated: false,
         user: null,
         token: '',
-      }
+      };
     default:
       return state;
   }
