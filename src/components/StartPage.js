@@ -45,7 +45,7 @@ class StartPage extends React.Component {
         <AppBar>
           <Toolbar>
             <Typography variant="title" color="inherit" style={{ flex: 1 }}>
-              DogeCodes React Chat
+              React Chat
             </Typography>
           </Toolbar>
         </AppBar>
