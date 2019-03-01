@@ -1,22 +1,28 @@
 import React from 'react';
+import moment from 'moment';
 import { withStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
 import ListItemText from '@material-ui/core/ListItemText';
+import { Link } from 'react-router-dom';
 import ListItem from '@material-ui/core/ListItem';
 import Avatar from './Avatar';
 
-import titleInitials from '../utils/title-initials';
-
 const styles = theme => ({
-  // ...
+  activeItem: {
+    backgroundColor: theme.palette.grey[200],
+  }
 });
 
-const ChatListItem = ({ classes, title }) => (
-  <ListItem button>
-    <Avatar colorFrom={title}>{title}</Avatar>
-    <ListItemText primary={title}/>
+const ChatListItem = ({ classes, disabled, title, chatId, active, createdAt }) => (
+  <ListItem
+    button
+    component={Link}
+    to={`/chat/${chatId}`}
+    className={active ? classes.activeItem : ''}
+    disabled={disabled}
+  >
+    <Avatar colorFrom={chatId}>{title}</Avatar>
+    <ListItemText primary={title} secondary={moment(createdAt).fromNow()}/>
   </ListItem>
 );
 
 export default withStyles(styles)(ChatListItem);
-
